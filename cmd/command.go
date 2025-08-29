@@ -17,5 +17,6 @@ func Commands(currentDaily *daily.Daily) []Command {
 		Delete(currentDaily),
 		History(),
 		Init(),
+		Help(),
 	}
 }
