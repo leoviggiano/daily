@@ -45,6 +45,10 @@ func (d *Daily) Add(item string) error {
 }
 
 func (d *Daily) Remove(i []int) error {
+	if len(i) == 0 {
+		return nil
+	}
+
 	deleteMap := make(map[int]bool)
 	for _, idx := range i {
 		deleteMap[idx] = true

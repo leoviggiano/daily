@@ -85,10 +85,16 @@ func (d *delete) getItems(args []string) ([]int, error) {
 }
 
 func (d *delete) menuInput() []string {
+	items := d.currentDaily.List
+	if len(items) == 0 {
+		return []string{}
+	}
+
 	menu := gocliselect.NewMenu("Selecione o item para deletar")
 
-	for _, item := range d.currentDaily.List {
+	for _, item := range items {
 		menu.AddItem(fmt.Sprintf("%d - %s", item.Order, item.Description), strconv.Itoa(item.Order))
 	}
+
 	return []string{menu.Display()}
 }
