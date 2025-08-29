@@ -36,7 +36,11 @@ func main() {
 
 	currentCommand, ok := cmdMap[args[0]]
 	if !ok {
-		fmt.Println("Command not found")
+		err := cmdMap["add"].Exec(args...)
+		if err != nil {
+			log.Fatal(err)
+		}
+
 		return
 	}
 
